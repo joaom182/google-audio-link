@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+	<title>Google Audio Helper</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	var app = angular.module("app", []);
+	
+	app.controller("MainController", ["$scope", function($scope){
+		$scope.audioText = "";
+
+		$scope.getLink = function(){
+			window.location.href = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + $scope.audioText + "&tl=pt&total=8&idx=3&textlen=58&client=t&prev=input";
+		}
+	});
+</script>
+	<div class="form-group">
+		<input type="text" class="form-control" data-ng-model="audioText" />
+	</div>
+	<a ng-href="getLink()" target="_blank" class="btn btn-primary">Get Link!</button>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "gaudio",
+  "version": "0.0.1",
+  "authors": [
+    "joao.mainka <joao.mainka@quay.com.br>"
+  ],
+  "description": "Google Audio Link Generator",
+  "main": "index.html",
+  "keywords": [
+    "google",
+    "audio",
+    "link",
+    "generator"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
