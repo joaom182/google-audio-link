@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html data-ng-app="app">
 <head>
-	<title>Google Audio Helper</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <title>Google Audio Helper</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<script type="text/javascript">
-		var app = angular.module("app", []);
+  <script type="text/javascript">
+    var app = angular.module("app", []);
 
-		app.config(['$httpProvider', function($httpProvider) {
-			$httpProvider.defaults.useXDomain = true;
-			delete $httpProvider.defaults.headers.common['X-Requested-With'];
-		}]);
+    app.config(['$httpProvider', function($httpProvider) {
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }]);
 
-		app.controller("MainController", ["$scope", "$http", function($scope, $http){
-			$scope.audioText = "";
-			$scope.generatedLink = null;
+    app.controller("MainController", ["$scope", "$http", function($scope, $http){
+      $scope.audioText = "";
+      $scope.generatedLink = null;
 
-			$scope.getLink = function(){
-				$http.post('http://www.googleapis.com/urlshortener/v1/url', {
-					longUrl: "https://translate.google.com/translate_tts?ie=UTF-8&q=" + $scope.audioText + "&tl=pt&total=8&idx=3&textlen=58&client=t&prev=input"
-				}).success(function(data, status, headers, config) {
-					$scope.generatedLink = data.id;
-				});
-			}
-		}]);
+      $scope.getLink = function(){
+        $http.post('http://www.googleapis.com/urlshortener/v1/url', {
+          longUrl: "https://translate.google.com/translate_tts?ie=UTF-8&q=" + $scope.audioText + "&tl=pt&total=8&idx=3&textlen=58&client=t&prev=input"
+        }).success(function(data, status, headers, config) {
+          $scope.generatedLink = data.id;
+        });
+      }
+    }]);
 
-	</script>
-	<div data-ng-controller="MainController">
-		<a ng-href="{{generatedLink}}" target="_blank" class="link">{{generatedLink}}</a>
-		<div class="form-group">
-			<input type="text" class="form-control" data-ng-model="audioText" />
-		</div>
-		<a data-ng-click="getLink()" target="_blank" class="btn btn-primary">Get Link!</a>
-	</div>
+  </script>
+  <div data-ng-controller="MainController">
+    <a ng-href="{{generatedLink}}" target="_blank" class="link">{{generatedLink}}</a>
+    <div class="form-group">
+      <input type="text" class="form-control" data-ng-model="audioText" />
+    </div>
+    <a data-ng-click="getLink()" target="_blank" class="btn btn-primary">Get Link!</a>
+  </div>
 </body>
 </html>
