@@ -1,0 +1,21 @@
+.area{
+	width:420px;
+	margin:0 auto;
+}
+
+.generate-area{
+	position: absolute;
+	background: #F7F7F9;
+	width:100%;
+	padding: 48px 0;
+	top:50%;
+	margin-top: -130px;
+	text-align: center;
+}
+
+.generated-link{
+	font-size:2.2em;
+	display: block;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
