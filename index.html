@@ -18,7 +18,15 @@
       <div class="area">
         <a ng-href="{{generatedLink}}" target="_blank" class="generated-link">{{generatedLink}}</a>
         <div class="form-group">
-          <input type="text" class="form-control" data-ng-model="audioText" placeholder="Write your text here that want to generate the audio link" maxlength="100" />
+        <div class="input-group">
+            <input type="text" class="form-control" data-ng-model="audioText" placeholder="Write your text here that want to generate the audio link" maxlength="100" />
+            <div class="input-group-addon">
+              <select data-ng-model="language">
+                <option value="pt">pt-BR</option>
+                <option value="en">en-US</option>
+              </select>
+            </div>
+          </div>
         </div>
         <a data-ng-click="getLink()" target="_blank" class="btn btn-warning btn-lg">Get Link!</a>
       </div>

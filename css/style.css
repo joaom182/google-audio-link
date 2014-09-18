@@ -19,3 +19,10 @@
 	margin-bottom: 20px;
 	cursor: pointer;
 }
+
+select{
+	border:0;
+	background: transparent;
+	cursor: pointer;
+	outline: 0 !important;
+}
