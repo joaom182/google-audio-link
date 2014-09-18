@@ -1,4 +1,4 @@
-var app = angular.module("app", []);
+﻿var app = angular.module("app", []);
 
 app.config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.useXDomain = true;
@@ -6,8 +6,16 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.controller("MainController", ["$scope", "$http", function($scope, $http){
+  $scope = $scope || {};
+
+  var _placeholderText = {
+    pt: "Escreva o texto que você deseja gerar o link do audio",
+    en: "Write your text here that want to generate the audio link"
+  }
+
   $scope.audioText = "";
   $scope.generatedLink = "https://goo.gl/";
+  $scope.inputPlaceholder = _placeholderText.pt;
   $scope.language = "pt";
 
   $scope.getLink = function(){
@@ -17,4 +25,9 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http){
       $scope.generatedLink = data.id;
     });
   }
+
+  $scope.$watch("language", function(n,o){
+    $scope.inputPlaceholder = _placeholderText[n];
+  });
+
 }]);
